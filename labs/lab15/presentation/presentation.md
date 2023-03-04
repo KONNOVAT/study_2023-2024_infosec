@@ -1,14 +1,12 @@
 ---
 ## Front matter
 lang: ru-RU
-title: Структура научной презентации
-subtitle: Простейший шаблон
-author:
-  - Кулябов Д. С.
+title: Презентация по отчету 1 этап
+subtitle: 1
+  - Коннова Татьяна Алексеевна
 institute:
   - Российский университет дружбы народов, Москва, Россия
-  - Объединённый институт ядерных исследований, Дубна, Россия
-date: 01 января 1970
+date: 25 февраля 2023
 
 ## i18n babel
 babel-lang: russian
@@ -28,183 +26,231 @@ header-includes:
  - '\makeatother'
 ---
 
-# Информация
 
-## Докладчик
+# Вступление
+---
+## Front matter
+title: "Этап 1"
+subtitle: "Отчет по Индивидуальному проекту"
+author: "Коннова Татьяна Алексеевна"
 
-:::::::::::::: {.columns align=center}
-::: {.column width="70%"}
+## Generic otions
+lang: ru-RU
+toc-title: "Содержание"
 
-  * Кулябов Дмитрий Сергеевич
-  * д.ф.-м.н., профессор
-  * профессор кафедры прикладной информатики и теории вероятностей
-  * Российский университет дружбы народов
-  * [kulyabov-ds@rudn.ru](mailto:kulyabov-ds@rudn.ru)
-  * <https://yamadharma.github.io/ru/>
+## Bibliography
+bibliography: bib/cite.bib
+csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
 
-:::
-::: {.column width="30%"}
+## Pdf output format
+toc: true # Table of contents
+toc-depth: 2
+lof: true # List of figures
+lot: true # List of tables
+fontsize: 12pt
+linestretch: 1.5
+papersize: a4
+documentclass: scrreprt
+## I18n polyglossia
+polyglossia-lang:
+  name: russian
+  options:
+	- spelling=modern
+	- babelshorthands=true
+polyglossia-otherlangs:
+  name: english
+## I18n babel
+babel-lang: russian
+babel-otherlangs: english
+## Fonts
+mainfont: PT Serif
+romanfont: PT Serif
+sansfont: PT Sans
+monofont: PT Mono
+mainfontoptions: Ligatures=TeX
+romanfontoptions: Ligatures=TeX
+sansfontoptions: Ligatures=TeX,Scale=MatchLowercase
+monofontoptions: Scale=MatchLowercase,Scale=0.9
+## Biblatex
+biblatex: true
+biblio-style: "gost-numeric"
+biblatexoptions:
+  - parentracker=true
+  - backend=biber
+  - hyperref=auto
+  - language=auto
+  - autolang=other*
+  - citestyle=gost-numeric
+## Pandoc-crossref LaTeX customization
+figureTitle: "Рис."
+tableTitle: "Таблица"
+listingTitle: "Листинг"
+lofTitle: "Список иллюстраций"
+lolTitle: "Листинги"
+## Misc options
+indent: true
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{float} # keep figures where there are in the text
+  - \floatplacement{figure}{H} # keep figures where there are in the text
+---
 
-![](./image/kulyabov.jpg)
+# Цель работы
 
-:::
-::::::::::::::
-
-# Вводная часть
-
-## Актуальность
-
-- Важно донести результаты своих исследований до окружающих
-- Научная презентация --- рабочий инструмент исследователя
-- Необходимо создавать презентацию быстро
-- Желательна минимизация усилий для создания презентации
-
-## Объект и предмет исследования
-
-- Презентация как текст
-- Программное обеспечение для создания презентаций
-- Входные и выходные форматы презентаций
-
-## Цели и задачи
-
-- Создать шаблон презентации в Markdown
-- Описать алгоритм создания выходных форматов презентаций
-
-## Материалы и методы
-
-- Процессор `pandoc` для входного формата Markdown
-- Результирующие форматы
-	- `pdf`
-	- `html`
-- Автоматизация процесса создания: `Makefile`
-
-# Создание презентации
-
-## Процессор `pandoc`
-
-- Pandoc: преобразователь текстовых файлов
-- Сайт: <https://pandoc.org/>
-- Репозиторий: <https://github.com/jgm/pandoc>
-
-## Формат `pdf`
-
-- Использование LaTeX
-- Пакет для презентации: [beamer](https://ctan.org/pkg/beamer)
-- Тема оформления: `metropolis`
-
-## Код для формата `pdf`
-
-```yaml
-slide_level: 2
-aspectratio: 169
-section-titles: true
-theme: metropolis
-```
-
-## Формат `html`
-
-- Используется фреймворк [reveal.js](https://revealjs.com/)
-- Используется [тема](https://revealjs.com/themes/) `beige`
-
-## Код для формата `html`
-
-- Тема задаётся в файле `Makefile`
-
-```make
-REVEALJS_THEME = beige 
-```
-# Результаты
-
-## Получающиеся форматы
-
-- Полученный `pdf`-файл можно демонстрировать в любой программе просмотра `pdf`
-- Полученный `html`-файл содержит в себе все ресурсы: изображения, css, скрипты
-
-# Элементы презентации
-
-## Актуальность
-
-- Даёт понять, о чём пойдёт речь
-- Следует широко и кратко описать проблему
-- Мотивировать свое исследование
-- Сформулировать цели и задачи
-- Возможна формулировка ожидаемых результатов
-
-## Цели и задачи
-
-- Не формулируйте более 1--2 целей исследования
-
-## Материалы и методы
-
-- Представляйте данные качественно
-- Количественно, только если крайне необходимо
-- Излишние детали не нужны
-
-## Содержание исследования
-
-- Предлагаемое решение задач исследования с обоснованием
-- Основные этапы работы
-
-## Результаты
-
-- Не нужны все результаты
-- Необходимы логические связки между слайдами
-- Необходимо показать понимание материала
+    Установить необходимое программное обеспечение.
+    Скачать шаблон темы сайта.
+    Разместить его на хостинге git.
+    Установить параметр для URLs сайта.
+    Разместить заготовку сайта на Github pages.
 
 
-## Итоговый слайд
+# Задание
 
-- Запоминается последняя фраза. © Штирлиц
-- Главное сообщение, которое вы хотите донести до слушателей
-- Избегайте использовать последний слайд вида *Спасибо за внимание*
+Размещение на Github pages заготовки для персонального сайта.
 
-# Рекомендации
 
-## Принцип 10/20/30
+# Выполнение отчета
 
-  - 10 слайдов
-  - 20 минут на доклад
-  - 30 кегль шрифта
 
-## Связь слайдов
+## Скачивание и основные этапы
 
-::: incremental
+Скачиваем Hugo, вырезаем файл в папку bin 
 
-- Один слайд --- одна мысль
-- Нельзя ссылаться на объекты, находящиеся на предыдущих слайдах (например, на формулы)
-- Каждый слайд должен иметь заголовок
 
-:::
+- Клонирование репозитория 
 
-## Количество сущностей
+В тероминале делаем git clone --recursive git@github.com:KONNOVAT/road.git 
 
-::: incremental
 
-- Человек может одновременно помнить $7 \pm 2$ элемента
-- При размещении информации на слайде старайтесь чтобы в сумме слайд содержал не более 5 элементов
-- Можно группировать элементы так, чтобы визуально было не более 5 групп
+- Работа с Hugo
 
-:::
+~/bin/hugo
 
-## Общие рекомендации
 
-::: incremental
+Выгрузили файлы
 
-- На слайд выносится та информация, которая без зрительной опоры воспринимается хуже
-- Слайды должны дополнять или обобщать содержание выступления или его частей, а не дублировать его
-- Информация на слайдах должна быть изложена кратко, чётко и хорошо структурирована
-- Слайд не должен быть перегружен графическими изображениями и текстом
-- Не злоупотребляйте анимацией и переходами
 
-:::
+![Цели и задания. Прописывание элементов](image/1111.png){#fig:001 width=70%}
 
-## Представление данных
+## Удаление public
 
-::: incremental
 
-- Лучше представить в виде схемы
-- Менее оптимально представить в виде рисунка, графика, таблицы
-- Текст используется, если все предыдущие способы отображения информации не подошли
+Так как данный файл нам пока не нужен, мы удаляем его и еще раз делаем данную команду
 
-:::
+
+
+~/bin/hugo server
+
+
+
+## Открытие сайта и работа с репозиторием 
+
+Переходим на localhost:1313 
+
+
+Замечу, что синей ошибки у меня не появилось. 
+
+
+Создаем новый репозиторий с именем konnovat.github.io
+
+## 
+
+
+git clone --recursive git@github.com:KONNOVAT/konnovat.github.io.git
+
+git checkout -b main
+
+
+Добавиm README.md
+
+## 
+
+![Этапы работы](image/3331.png){#fig:002 width=70%}
+
+
+touch README.md
+
+
+git add .
+
+
+
+
+git commit -am "Добавили README.md"
+
+
+git push origin
+
+## 
+
+
+git submodule add -b main git@github.com:KONNOVAT/KONNOVAT.github.io.git public
+
+
+~/bin/hugo
+
+
+![Этапы работы](image/ce,.png){#fig:002 width=70%}
+
+## 
+
+
+
+![Этапы работы](image/2222.png){#fig:002 width=70%}
+
+
+
+Комментируем public в gitignore
+
+git submodule add -b main git@github.com:KONNOVAT/KONNOVAT.github.io.git public
+
+
+~/bin/hugo
+## 
+
+cd public/
+
+
+git remote -v
+
+
+![Окно терминала](image/3333.png){#fig:003 width=70%}
+
+
+
+git add .
+
+
+
+git commit -am "Добавили сайт"
+
+
+
+
+
+
+
+Добавили сайт
+
+
+git push origin
+
+
+
+
+Окончательно преходим на сайт 
+
+
+KONNOVAT.github.io
+
+
+![Терминал и  окно](image/4444.png){#fig:004 width=70%}
+
+
+
+
+# Выводы
+
+Мы научились работать с индивидуальным проектом
+
 
